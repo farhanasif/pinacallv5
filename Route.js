@@ -11,6 +11,8 @@ import ForgotPassword from './src/screens/ForgotPassword';
 import HomeScreen from './src/screens/HomeScreen';
 import QueryScreen from './src/screens/QueryScreen';
 import MapScreen from './src/screens/MapScreen';
+import Video from './src/screens/Video';
+import JoinCall from './src/screens/JoinCall';
 
 import { DrawerContent } from './src/components/DrawerContent';
 
@@ -22,6 +24,8 @@ function rootDrawer(){
       <Drawer.Screen name="Home" component={HomeScreen} />
       <Drawer.Screen name="Query" component={QueryScreen} />
       <Drawer.Screen name="Map" component={MapScreen} />
+      <Drawer.Screen name="Video" component={Video} />
+      <Drawer.Screen name="JoinCall" component={JoinCall} />
     </Drawer.Navigator>
   )
 }

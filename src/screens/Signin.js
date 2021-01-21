@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { StyleSheet, Text, View,Image, TouchableOpacity, TextInput } from 'react-native';
+import {useState} from 'react';
+import { StyleSheet, Text, View,Image, TouchableOpacity, TextInput, Alert } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 import { Dimensions } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -7,11 +8,15 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { COLORS } from '../assets/utils/colors';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const screen = Dimensions.get("screen");
 const WIDTH = screen.width;
 
 const Signin = ({ navigation }) => {
+  const [mobile, setMobile] = useState('');
+
   return (
     <View style={styles.container}>
       <Image
@@ -26,6 +31,8 @@ const Signin = ({ navigation }) => {
                 style={styles.input}
                 placeholder="MOBILE"
                 underlineColorAndroid={COLORS.pinacall_pink}
+                onChangeText={text => setMobile(text)}
+                defaultValue={mobile}
             />
         </View>
         <View style={styles.searchSection}>
@@ -54,7 +61,17 @@ const Signin = ({ navigation }) => {
             end: { x: 1, y: 0.5 },
           }}
           buttonStyle={{marginTop: 20,}}
-          onPress={() => navigation.navigate('Root')}
+          onPress={async() => {
+            //alert('success')
+            if(mobile == ''){
+              alert('enter mobile');
+            }
+            else{
+              await AsyncStorage.setItem('@mobile', mobile);
+              navigation.navigate('Root', { screen: 'Home' });
+            }
+
+          }}
         />
         <Button
           title="Sign In With Gmail"

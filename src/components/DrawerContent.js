@@ -67,7 +67,7 @@ export function DrawerContent(props) {
                             <DrawerItem
                                 icon={({color, size}) => (
                                     <Icon
-                                    name="account-outline"
+                                    name="account-check-outline"
                                     color={COLORS.placeholder}
                                     size={size}
                                     />
@@ -79,7 +79,7 @@ export function DrawerContent(props) {
                             <DrawerItem
                                 icon={({color, size}) => (
                                     <Icon
-                                    name="account-card-details-outline"
+                                    name="account-details-outline"
                                     color={COLORS.placeholder}
                                     size={size}
                                     />
@@ -91,7 +91,7 @@ export function DrawerContent(props) {
                             <DrawerItem
                                 icon={({color, size}) => (
                                     <Icon
-                                    name="settings-outline"
+                                    name="cog-outline"
                                     color={COLORS.placeholder}
                                     size={size}
                                     />
@@ -103,7 +103,7 @@ export function DrawerContent(props) {
                             <DrawerItem
                                 icon={({color, size}) => (
                                     <Icon
-                                    name="account-check-outline"
+                                    name="phone-outline"
                                     color={COLORS.placeholder}
                                     size={size}
                                     />
@@ -129,7 +129,7 @@ export function DrawerContent(props) {
                     <DrawerItem
                         icon={({color, size}) => (
                             <Icon
-                            name="exit-to-app"
+                            name="home-outline"
                             color={COLORS.placeholder}
                             size={size}
                             />

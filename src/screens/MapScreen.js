@@ -6,7 +6,7 @@ import pin_green from '../assets/images/pin-green-icon.png';
 import pin_red from '../assets/images/pin-red-icon.png';
 
 
-export default function MapScreen () {
+export default function MapScreen ({ navigation }) {
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
   const [region, setRegion] = useState(null);
@@ -32,8 +32,8 @@ export default function MapScreen () {
         let responseJson = await response.json();
         console.log(responseJson);
         setNearbyofferslist(responseJson);
-        
-    } 
+
+    }
     catch (error) {
         alert('An error occured during api data fetch: '+error);
     }
@@ -87,10 +87,14 @@ export default function MapScreen () {
       }
     }
 
+    const _callUsers = () => {
+      navigation.navigate('Video')
+    }
+
     return (
       <View style={styles.container}>
         { region ? (
-          <MapView 
+          <MapView
               style={styles.mapStyle}
               region={region}
               followUserLocation={true}
@@ -108,7 +112,7 @@ export default function MapScreen () {
               />
             </MapView.Marker>
             {nearby ? nearby.map((marker, index) => (
-                <MapView.Marker 
+                <MapView.Marker
                     coordinate={{
                     latitude: parseFloat(marker.latitude),
                     longitude: parseFloat(marker.longitude),
@@ -124,7 +128,7 @@ export default function MapScreen () {
           }
           </MapView>
         ): <View></View>}
-        
+
         <View style={styles.buttonContainer}>
           <TouchableOpacity
             onPress={() => _checkNearByData()}
@@ -132,7 +136,7 @@ export default function MapScreen () {
             <Text style={styles.buttonItem}>SEARCH</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => console.log('pressed')}
+            onPress={() => _callUsers()}
             style={styles.button}>
             <Text style={styles.buttonItem}>CALL</Text>
           </TouchableOpacity>
